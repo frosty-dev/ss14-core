@@ -11,3 +11,17 @@
   - type: ConditionalSpawner
     prototypes:
       - MobGondola
+
+- type: entity
+  name: Space Bats Spawner
+  id: ScaryBatsSpawner
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: White/Mobs/Animals/bats.rsi
+          state: icon
+    - type: ConditionalSpawner
+      prototypes:
+        - MobScaryBats

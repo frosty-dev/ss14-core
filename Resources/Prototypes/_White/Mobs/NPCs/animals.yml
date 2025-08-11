@@ -1,0 +1,45 @@
+- type: entity
+  parent: [ SimpleMobBase, MobCombat, FlyingMobBase ]
+  id: MobScaryBats
+  name: Space bats
+  description: A swarm of cute little blood sucking bats that looks pretty pissed.
+  components:
+    - type: Sprite
+      drawdepth: Mobs
+      sprite: White/Mobs/Animals/bats.rsi
+      layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
+        state: alive
+    - type: DamageStateVisuals
+      states:
+        Alive:
+          Base: alive
+        Dead:
+          Base: dead
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.25
+          density: 10
+          mask:
+          - FlyingMobMask
+          layer:
+          - FlyingMobLayer
+    - type: NpcFactionMember
+      factions:
+        - Xeno
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHostileCompound
+    - type: MobState
+      allowedStates:
+      - Alive
+      - Dead
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        50: Dead
